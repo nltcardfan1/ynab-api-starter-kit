@@ -25,5 +25,7 @@ module.exports = {
       }
     }),
     new VueLoaderPlugin()
-  ]
+  ],
+  devtool: 'inline-source-map'
+  
 };

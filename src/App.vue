@@ -114,7 +114,9 @@ export default {
       this.budgetId = id;
       this.transactions = [];
       this.api.transactions.getTransactions(id).then((res) => {
-        this.transactions = res.data.transactions;
+        this.transactions = res.data.transactions.sort((a,b)=>{
+          return new Date(b.date) - new Date(a.date)
+        });
       }).catch((err) => {
         this.error = err.error.detail;
       }).finally(() => {

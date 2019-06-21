@@ -19,7 +19,7 @@
         <td>{{transaction.payee_name}}</td>
         <td>{{transaction.category_name}}</td>
         <td>{{transaction.memo}}</td>
-        <td>{{convertMilliUnitsToCurrencyAmount(transaction.amount).toFixed(2)}}</td>
+        <td>{{convertAndFormat(transaction.amount)}}</td>
       </tr>
     </tbody>
     </table>
@@ -29,13 +29,18 @@
 <script>
 // Import utils from YNAB
 import {utils} from 'ynab';
+import {formatWithDollarSign} from '../helpers.js'
 
 export default {
   props: ['transactions'],
   methods: {
     // Now we can make this method available to our template
     // So we can format this milliunits in the correct currency format
-    convertMilliUnitsToCurrencyAmount: utils.convertMilliUnitsToCurrencyAmount
+    convertMilliUnitsToCurrencyAmount: utils.convertMilliUnitsToCurrencyAmount,
+
+    convertAndFormat(amount){
+      return formatWithDollarSign(utils.convertMilliUnitsToCurrencyAmount(amount))
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="budgets container">
     <h5>Select A Budget</h5>
-    <div v-for="budget in budgets" class="row">
+    <div v-for="budget in budgets" v-bind:key="budget.id" class="row">
       <a class="col" href="#" @click="selectBudget(budget.id, $event)">
         {{budget.name}}
       </a>
