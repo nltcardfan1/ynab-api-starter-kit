@@ -23,7 +23,7 @@ const mutations = {
 
 const actions = {
   getTransactions({ commit, state, rootState }) {
-    return rootState.ynab.api.transactions.getTransactions(rootState.budgetId).then((res) => {
+    return rootState.ynab.api.transactions.getTransactions("default").then((res) => {
       var transactions = res.data.transactions.sort((a, b) => {
         return new Date(b.date) - new Date(a.date)
       });
